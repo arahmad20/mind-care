@@ -1,4 +1,4 @@
-This aplication is to capstone projct UT
+This aplication is to capstone project UT
 Dev by : Ahmad Dani Af Rizal
 
 ## Getting Started
