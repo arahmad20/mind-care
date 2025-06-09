@@ -1,6 +1,5 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+export default {
+  images: {
+    domains: ['dummyimage.com'],
+  },
 };
-
-export default nextConfig;

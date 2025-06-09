@@ -1,114 +1,110 @@
+import FooterHome from "@/components/layouts/footer/footers";
+import Seo from "@/components/layouts/seo"
+import CardNews from "@/components/ui/card-news";
+import { dataArticleHome } from "@/lib/data-artikel";
+import { Bell, Search } from "lucide-react";
 import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
+import { Fragment } from "react"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const HomePageLayout = () => {
+  const recentArticles = dataArticleHome
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+    .slice(0, 3);
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function Home() {
-  return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              pages/index.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  return(
+    <Fragment>
+      <Seo title={`Home`} />
+      <main className="bg-slate-100 max-w-lg mx-auto">
+        <div className="relative">
+          <div className="w-full h-60 relative">
+            <Image 
+              src={`/images/app/bg-flat-home.jpg`}
+              fill
+              alt="BG_HOME"
+              className="object-cover"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+          <section className="flex items-center justify-between absolute top-4 w-full p-8">
+              <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-full bg-gray-400">
+
+                  </div>
+                  <div className="flex flex-col space-y-0 text-white">
+                      <h2>Ahmad Dani A</h2>
+                      <small>afrizal@ut.ac.id</small>
+                  </div>
+              </div>
+              <div className="flex items-center justify-center rounded-full bg-white/35 p-2">
+                <Bell />
+              </div>
+          </section>
+          <section className="p-8 absolute top-24 w-full">
+            <div className="bg-white/80 rounded-full p-3 w-full">
+              <Search size={20} />
+            </div>
+          </section>
+          <div className="bg-white rounded-t-xl p-4 absolute w-full -mt-4 min-h-svh space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold">Kategori</h2>
+              <span>lihat semua</span>
+            </div>
+            <div className="grid grid-cols-3 gap-4 justify-center">
+              <div className="flex flex-col space-y-2 text-center">
+                <Link href={`therapy`} passHref>
+                  <div className="p-4 h-28 w-full bg-lime-100 rounded-lg shadow-lg shadow-blue-100 relative">
+                    <Image 
+                      src={`/images/app/meditation.png`}
+                      fill
+                      alt="Image Cover"
+                      className="object-contain"
+                    />
+                  </div>
+                </Link>
+                <span>Terapi</span>
+              </div>
+              <div className="flex flex-col space-y-2 text-center">
+                <Link href={`mood-tracker`} passHref>
+                  <div className="p-4 h-28 w-full bg-purple-200 rounded-lg shadow-lg shadow-blue-100 relative">
+                    <Image 
+                      src={`/images/app/stay-home.png`}
+                      fill
+                      alt="Image Cover"
+                      className="object-contain"
+                    />
+                  </div>
+                </Link>
+                <span>Mood Tracker</span>
+              </div>
+              <div className="flex flex-col space-y-2 text-center">
+                <Link href={`journal`} passHref>
+                  <div className="p-4 h-28 w-full bg-sky-100 rounded-lg shadow-lg shadow-blue-100 relative">
+                    <Image 
+                      src={`/images/app/reading-book.png`}
+                      fill
+                      alt="Image Cover"
+                      className="object-contain"
+                    />
+                  </div>
+                </Link>
+                <span>Journaling</span>
+              </div>
+            </div>
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold">Last Article</h2>
+              <span>lihat semua</span>
+            </div>
+            <div className="space-y-2">
+              {recentArticles.map((artikel, index) => (
+                <CardNews data={artikel} key={index} location='artikel' />
+              ))}
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      <FooterHome />
+    </Fragment>
+  )
 }
+
+export default HomePageLayout;

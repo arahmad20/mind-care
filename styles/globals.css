@@ -19,3 +19,84 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* 🎨 MindCare Colors */
+    --primary: 199 100% 85%; /* #AEE4FF */
+    --primary-hover: 199 90% 75%; /* #87D2FA */
+    --primary-dark: 199 70% 65%; /* #5CB8E6 */
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 162 60% 78%; /* #A0E8D3 */
+    --secondary-hover: 167 55% 70%; /* #7BD9C0 */
+    --secondary-dark: 168 50% 60%; /* #56C9AB */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 70%; /* Soft red */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 199 100% 85%; /* Same as --primary */
+    --radius: 0.5rem;
+
+    /* Chart Colors (opsional untuk data visual) */
+    --chart-1: 197 100% 85%;
+    --chart-2: 168 55% 70%;
+    --chart-3: 210 30% 30%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* 🎨 MindCare Colors (Dark Mode) */
+    --primary: 199 100% 70%;
+    --primary-hover: 199 90% 60%;
+    --primary-dark: 199 70% 50%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 162 60% 60%;
+    --secondary-hover: 167 55% 50%;
+    --secondary-dark: 168 50% 40%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 199 100% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
